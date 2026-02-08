@@ -35,13 +35,12 @@
       width: 25px;
       height: 25px;
       background: #13633d;
-      opacity: 0.3; /* Increased visibility */
+      opacity: 0.3;
       border-radius: 0 100% 0 100%;
       animation: float 12s infinite linear;
       filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
     }
 
-    /* Depth of field effect */
     .leaf:nth-child(even) { filter: blur(2px); opacity: 0.2; }
 
     @keyframes float {
@@ -51,30 +50,28 @@
       100% { transform: translateY(110vh) translateX(150px) rotate(450deg); opacity: 0; }
     }
 
-    .leaf:nth-child(1) { left: 5%; animation-duration: 14s; animation-delay: 0s; }
+    .leaf:nth-child(1) { left: 5%; animation-duration: 14s; }
     .leaf:nth-child(2) { left: 25%; animation-duration: 18s; animation-delay: -3s; }
     .leaf:nth-child(3) { left: 45%; animation-duration: 12s; animation-delay: -6s; }
     .leaf:nth-child(4) { left: 65%; animation-duration: 20s; animation-delay: -2s; }
     .leaf:nth-child(5) { left: 85%; animation-duration: 15s; animation-delay: -5s; }
 
-    /* Glassmorphism for better background visibility */
     .glass-panel {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .content-wrapper { position: relative; z-index: 10; }
     .bg-bnhs-green { background-color: #13633d; }
     .text-bnhs-green { color: #13633d; }
-    .border-bnhs-green { border-color: #13633d; }
   </style>
 </head>
 <body class="font-sans text-gray-800">
 
   <div class="leaf-container">
     <div class="leaf"></div>
-    <div class="leaf :nth-child(2)"></div>
+    <div class="leaf"></div>
     <div class="leaf"></div>
     <div class="leaf"></div>
     <div class="leaf"></div>
@@ -88,18 +85,23 @@
     </nav>
 
     <section id="request" class="max-w-2xl mx-auto py-12 px-4">
-      <div class="glass-panel rounded-3xl shadow-2xl p-8 border-t-8 border-bnhs-green text-center">
+      <div class="glass-panel rounded-3xl shadow-2xl p-8 border-t-8 border-[#13633d] text-center">
         
-        <div class="relative mx-auto w-36 h-36 mb-6">
-          <div class="absolute inset-0 bg-bnhs-green opacity-30 rounded-full blur-2xl"></div>
-          <div class="relative w-full h-full bg-white rounded-full border-4 border-bnhs-green shadow-xl flex items-center justify-center overflow-hidden">
-            <img src="261a53ce-5210-43ea-b265-f72beaa28d07.jfif" alt="Bukal INHS Logo" class="w-4/5 h-4/5 object-contain">
+        <div class="relative mx-auto w-40 h-40 mb-6">
+          <div class="absolute inset-0 bg-[#13633d] opacity-20 rounded-full blur-2xl scale-110"></div>
+          
+          <div class="relative w-full h-full bg-white rounded-full border-4 border-white shadow-xl overflow-hidden flex items-center justify-center">
+            <img 
+              src="261a53ce-5210-43ea-b265-f72beaa28d07.jfif" 
+              alt="Bukal INHS Logo" 
+              class="w-full h-full object-cover object-center scale-110"
+            >
           </div>
         </div>
 
         <div class="mb-8">
           <h1 class="text-3xl font-black text-gray-900 tracking-tight">E-DocuQuest</h1>
-          <p class="text-bnhs-green font-bold uppercase tracking-wider text-sm">Bukal Integrated National High School</p>
+          <p class="text-[#13633d] font-bold uppercase tracking-wider text-sm">Bukal Integrated National High School</p>
           <p class="text-gray-500 text-[10px] mt-1 uppercase tracking-widest font-semibold">Padre Garcia, Batangas • Est. 1981</p>
         </div>
         
@@ -118,7 +120,7 @@
             <option>Request / Transfer Letter</option>
           </select>
           <textarea id="reason" placeholder="Reason for Request" class="w-full p-4 bg-white/50 rounded-xl border border-gray-200 focus:ring-2 focus:ring-emerald-400 outline-none transition" rows="3" required></textarea>
-          <button type="submit" id="submitBtn" class="w-full bg-bnhs-green text-white py-4 rounded-xl font-bold text-lg hover:scale-[1.02] shadow-lg active:scale-95 transition-all">Submit Request</button>
+          <button type="submit" id="submitBtn" class="w-full bg-[#13633d] text-white py-4 rounded-xl font-bold text-lg hover:brightness-110 shadow-lg active:scale-95 transition-all">Submit Request</button>
         </form>
         <div id="requestFeedback" class="mt-6 text-left"></div>
       </div>
@@ -129,16 +131,16 @@
         <h2 class="text-2xl font-bold mb-2">Track Your Document</h2>
         <p class="text-gray-600 mb-6 italic text-sm">Enter your Tracking ID below</p>
         
-        <input id="trackId" type="text" placeholder="BNHS-XXXXX" class="w-full p-4 bg-white/50 rounded-xl border border-gray-200 mb-4 text-center font-mono text-xl uppercase tracking-widest outline-none focus:border-bnhs-green transition">
-        <button onclick="handleTrack()" id="trackBtn" class="w-full bg-bnhs-green text-white py-4 rounded-xl font-bold hover:scale-[1.02] shadow-md transition">Check Status</button>
+        <input id="trackId" type="text" placeholder="BNHS-XXXXX" class="w-full p-4 bg-white/50 rounded-xl border border-gray-200 mb-4 text-center font-mono text-xl uppercase tracking-widest outline-none focus:border-[#13633d] transition">
+        <button onclick="handleTrack()" id="trackBtn" class="w-full bg-[#13633d] text-white py-4 rounded-xl font-bold hover:brightness-110 shadow-md transition">Check Status</button>
         
         <div id="trackDisplay" class="hidden-section mt-10 p-6 bg-emerald-50/80 rounded-2xl border border-emerald-100">
           <p id="trackHeaderMessage" class="text-sm font-bold text-emerald-900 mb-4 px-2 leading-tight"></p>
           <div class="w-full bg-gray-200 rounded-full h-4 mb-6 overflow-hidden">
-            <div id="trackBar" class="bg-bnhs-green h-full transition-all duration-1000" style="width: 0%"></div>
+            <div id="trackBar" class="bg-[#13633d] h-full transition-all duration-1000" style="width: 0%"></div>
           </div>
           <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-1 font-bold">Current Phase</p>
-          <p id="trackStatusText" class="text-2xl font-black text-bnhs-green italic uppercase tracking-tighter"></p>
+          <p id="trackStatusText" class="text-2xl font-black text-[#13633d] italic uppercase tracking-tighter"></p>
         </div>
       </div>
     </section>
@@ -154,14 +156,14 @@
 
     <section id="admin-panel" class="hidden-section max-w-6xl mx-auto py-12 px-4">
       <div class="glass-panel p-6 rounded-2xl shadow-2xl">
-         <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
           <h2 class="text-2xl font-bold text-gray-800">Dashboard</h2>
-          <button onclick="loadAdminData()" class="bg-bnhs-green text-white p-2 px-4 rounded-lg font-bold">🔄 Refresh</button>
+          <button onclick="loadAdminData()" class="bg-[#13633d] text-white p-2 px-4 rounded-lg font-bold">🔄 Refresh</button>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse bg-white/50">
             <thead>
-              <tr class="bg-bnhs-green text-white font-bold">
+              <tr class="bg-[#13633d] text-white font-bold">
                 <th class="p-4">ID</th><th class="p-4">Student</th><th class="p-4">Document</th><th class="p-4 text-center">Status</th><th class="p-4 text-center">Update</th>
               </tr>
             </thead>
@@ -201,9 +203,9 @@
       };
       try {
         await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(payload) });
-        feedback.innerHTML = `<div class="bg-bnhs-green p-6 rounded-2xl text-white text-center shadow-lg"><p class="font-bold text-xs uppercase mb-1 tracking-widest">ID Recorded:</p><p class="text-4xl font-mono font-black my-2">${trackingId}</p></div>`;
+        feedback.innerHTML = `<div class="bg-[#13633d] p-6 rounded-2xl text-white text-center shadow-lg"><p class="font-bold text-xs uppercase mb-1 tracking-widest">ID Recorded:</p><p class="text-4xl font-mono font-black my-2">${trackingId}</p></div>`;
         document.getElementById('requestForm').reset();
-      } catch (err) { alert("Error."); }
+      } catch (err) { alert("Error connecting to server."); }
       btn.disabled = false; btn.innerText = "Submit Request";
     });
 
@@ -215,7 +217,7 @@
       try {
         const res = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({action: "track", trackingId: id}) });
         const data = await res.json();
-        if (data.status === "Not Found") { alert("Not found."); btn.innerText = "Check Status"; return; }
+        if (data.status === "Not Found") { alert("ID not found."); btn.innerText = "Check Status"; return; }
         
         document.getElementById('trackDisplay').classList.remove('hidden-section');
         document.getElementById('trackStatusText').innerText = data.status;
@@ -229,7 +231,7 @@
           header.innerText = "Your document is ready for pick-up at the Guidance Office.";
           bar.style.width = "85%";
         } else if(data.status === "Received") {
-          header.innerText = "Document has been claimed.";
+          header.innerText = "Document cycle complete.";
           bar.style.width = "100%";
         } else {
           header.innerText = "Your document has been received.";
